@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.ayso.pe"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "microservice",
+    "baseName": "rrhh",
+    "packageName": "com.ayso.pe",
+    "packageFolder": "com/ayso/pe",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NzRlZWU4ZjA4NTE4MWY1ZTlmYzM1YTk0ZWJhMzFiYzgzMjk5NWNkZTZmMjIzOTkwZTdiOGY3NTlhNDMwOTdhZmZjYzY0ZjFiYTA5ZTNmY2I4ZTI2ZmExMTQxMjk3MTczOTJmODEwNGU4YzQwZTU1NjBhOWU2N2ExNjc3ZmJlODY=",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
