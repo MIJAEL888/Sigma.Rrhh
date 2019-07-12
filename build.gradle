@@ -92,18 +92,18 @@ if (OperatingSystem.current().isWindows()) {
 
 defaultTasks "bootRun"
 
-group = "com.ayso.pe"
+group = "com.sigma"
 version = "0.0.1-SNAPSHOT"
 
 description = ""
 
 springBoot {
-    mainClassName = "com.ayso.pe.RrhhApp"
+    mainClassName = "com.sigma.RrhhApp"
 }
 
 test {
     useJUnitPlatform()
-    exclude "**/*IT*", "**/*IntTest*"
+    exclude "**/*IT*", "**/*IntTest*", "**/*CucumberIT*"
     testLogging {
         events 'FAILED', 'SKIPPED'
     }
@@ -118,6 +118,7 @@ task integrationTest(type: Test) {
     description = "Execute integration tests."
     group = "verification"
     include "**/*IT*", "**/*IntTest*"
+    exclude "**/*CucumberIT*"
 
     testLogging {
         events 'FAILED', 'SKIPPED'
@@ -128,6 +129,19 @@ task integrationTest(type: Test) {
     reports.html.enabled = false
 }
 
+task cucumberTest(type: Test) {
+    description = "Execute cucumber BDD tests."
+    group = "verification"
+    include "**/*CucumberIT*"
+
+    // uncomment if the tests reports are not generated
+    // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
+    // ignoreFailures true
+    reports.html.enabled = false
+}
+
+check.dependsOn cucumberTest
+
 check.dependsOn integrationTest
 task testReport(type: TestReport) {
     destinationDir = file("$buildDir/reports/tests")
@@ -137,6 +151,11 @@ task testReport(type: TestReport) {
 task integrationTestReport(type: TestReport) {
     destinationDir = file("$buildDir/reports/tests")
     reportOn integrationTest
+}
+
+task cucumberTestReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    reportOn cucumberTest
 }
 
 if (!project.hasProperty("runList")) {
@@ -163,7 +182,7 @@ liquibase {
             username "rrhh"
             password ""
             changeLogFile project.ext.diffChangelogFile
-            referenceUrl "hibernate:spring:com.ayso.pe.domain?dialect=org.hibernate.dialect.H2Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+            referenceUrl "hibernate:spring:com.sigma.domain?dialect=org.hibernate.dialect.H2Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
             defaultSchemaName ""
             logLevel "debug"
             classpath "$buildDir/classes/java/main"
@@ -204,15 +223,14 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-annotations"
     implementation "com.fasterxml.jackson.core:jackson-databind"
     implementation "com.fasterxml.jackson.module:jackson-module-afterburner"
-    implementation "com.hazelcast:hazelcast"
-    implementation "com.hazelcast:hazelcast-hibernate53"
-    implementation "com.hazelcast:hazelcast-spring"
     implementation "javax.cache:cache-api"
     implementation "org.hibernate:hibernate-core"
     implementation "com.zaxxer:HikariCP"
     implementation "org.apache.commons:commons-lang3"
     implementation "commons-io:commons-io"
     implementation "javax.transaction:javax.transaction-api"
+    implementation "org.ehcache:ehcache"
+    implementation "org.hibernate:hibernate-jcache"
     implementation "org.hibernate:hibernate-entitymanager"
     implementation "org.hibernate:hibernate-envers"
     implementation "org.hibernate.validator:hibernate-validator"
@@ -261,6 +279,8 @@ dependencies {
         exclude group: "com.vaadin.external.google", module: "android-json"
     }
     testImplementation "com.jayway.jsonpath:json-path"
+    testImplementation "io.cucumber:cucumber-junit"
+    testImplementation "io.cucumber:cucumber-spring"
     testImplementation ("org.springframework.boot:spring-boot-starter-test") {
         exclude module: "junit"
         exclude group: "com.vaadin.external.google", module: "android-json"
@@ -268,6 +288,7 @@ dependencies {
     testImplementation "org.springframework.security:spring-security-test"
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.junit.vintage:junit-vintage-engine"
     testImplementation "org.assertj:assertj-core"
     testImplementation "junit:junit"
     testImplementation "org.mockito:mockito-core"

@@ -1,16 +1,16 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.ayso.pe"
+      "packageName": "com.sigma"
     },
     "jhipsterVersion": "6.1.2",
     "applicationType": "microservice",
     "baseName": "rrhh",
-    "packageName": "com.ayso.pe",
-    "packageFolder": "com/ayso/pe",
+    "packageName": "com.sigma",
+    "packageFolder": "com/sigma",
     "serverPort": "8081",
     "authenticationType": "jwt",
-    "cacheProvider": "hazelcast",
+    "cacheProvider": "ehcache",
     "enableHibernateCache": true,
     "websocket": false,
     "databaseType": "sql",
@@ -21,9 +21,10 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "NzRlZWU4ZjA4NTE4MWY1ZTlmYzM1YTk0ZWJhMzFiYzgzMjk5NWNkZTZmMjIzOTkwZTdiOGY3NTlhNDMwOTdhZmZjYzY0ZjFiYTA5ZTNmY2I4ZTI2ZmExMTQxMjk3MTczOTJmODEwNGU4YzQwZTU1NjBhOWU2N2ExNjc3ZmJlODY=",
+    "jwtSecretKey": "Y2U5Y2Y2MWQzNmViNTk5YmE0ZGFlYzYxZGQ5NDU0MjJjYzczN2U4ZmMzMGIxYWRmYzdiZmM2NWQzYzBlYjNjMGEwMmM1ZGM1YjU0NTBlZTIxMjlmOGIxNWZlMjg5MjlmMGI3NjI4Zjk2YWM4MGUyMzkyZjY5NWNkODQyMDczZWQ=",
     "testFrameworks": [
-      "gatling"
+      "gatling",
+      "cucumber"
     ],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
