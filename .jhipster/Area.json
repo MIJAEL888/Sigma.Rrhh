@@ -1,0 +1,48 @@
+{
+    "name": "Area",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "comentario",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "posicion",
+            "otherEntityRelationshipName": "area",
+            "relationshipName": "area"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "area",
+            "otherEntityRelationshipName": "area",
+            "relationshipName": "gerencia",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190713061831",
+    "entityTableName": "area",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "rrhh",
+    "applications": "*",
+    "microserviceName": "rrhh",
+    "angularJSSuffix": "rrhh"
+}

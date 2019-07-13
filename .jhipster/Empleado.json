@@ -1,0 +1,98 @@
+{
+    "name": "Empleado",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apellidoPaterno",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apellidoMaterno",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipoDocumento",
+            "fieldType": "TipoDocumento",
+            "fieldValues": "DNI,PASSAPORTE,RUC"
+        },
+        {
+            "fieldName": "numeroDocumento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 15
+        },
+        {
+            "fieldName": "fechaNacimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaIngreso",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "tipoContrato",
+            "fieldType": "TipoContrato",
+            "fieldValues": "PLANILLA,RECIBO"
+        },
+        {
+            "fieldName": "tipoAportacion",
+            "fieldType": "TipoPension",
+            "fieldValues": "SNP,SPP"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "EstadoEmpleado",
+            "fieldValues": "ACTIVO,CESE"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaActualizacion",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estadoCivil",
+            "fieldType": "EstadoCivil",
+            "fieldValues": "SOLTERO,CONVIVIENTE,CASADO,DIVORCIADO,VIUDO,OTROS"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "posicion",
+            "otherEntityName": "posicion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190713061829",
+    "entityTableName": "empleado",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "rrhh",
+    "applications": "*",
+    "microserviceName": "rrhh",
+    "angularJSSuffix": "rrhh"
+}
